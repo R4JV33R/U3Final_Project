@@ -21,5 +21,5 @@ The game requires the user to stay engaged and use the 'W' 'A' 'S' and 'D' keys 
 <ul>
   <li>I will complete the entire game, including the scenes and levels.</li>
   <li>I will brush up the game and add the finishing touches.</li>
-<ul>  
+</ul>  
 <ul>

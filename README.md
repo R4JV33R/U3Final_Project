@@ -1,8 +1,9 @@
-# U3Final_Project
+<h3> U3Final_Project</h3>
 Unit 3 Final Project (Coding 2)
 
-#Interaction
+<h3>Interaction</h3>
 What is the interesting way that the user interacts with your program?
+The game requires the user to stay engaged and use the 'W' 'A' 'S' and 'D' keys to play.
 
 <h3>Milestone #1: November 22nd 2019</h3>
 <ul>

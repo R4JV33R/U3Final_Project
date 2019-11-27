@@ -8,13 +8,16 @@ boolean up, down, left, right = false;
 int scene = 1;
 int screen;
 int score;
+PImage face;
+
 
 int COUNT = 100;
 
 void setup()
 {
   size(800, 800, P2D);
-
+  face=loadImage("Face.png");
+  face.resize(20,20);
   player = new PVector(400, 600);
 
   p = new Projectile(300, 300, player.x, player.y);
@@ -44,6 +47,11 @@ void draw()
 
   if (screen == 1)
   {
+    
+    if(p.coll_true == true)
+    {
+      score += p.grade*10;
+    }
     //background(0);
     textSize(32);
     fill (255,0,0);
@@ -58,8 +66,10 @@ void draw()
 
   
     p.Update();
-
-
+ 
+     {
+       scene+=1;
+     }
 
     for (Projectile bullet : Bullets)
     {

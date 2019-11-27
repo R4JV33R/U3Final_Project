@@ -75,7 +75,7 @@ class Enemy extends Entity
   void Update(PVector _player)
   {
     fill(255, 0, 0);
-    ellipse(enemyPos.x, enemyPos.y, 20, 20);
+    image(face,enemyPos.x, enemyPos.y);
     fill(0);
     
     PVector dir = player.copy().sub(enemyPos);
@@ -83,7 +83,7 @@ class Enemy extends Entity
     dir.mult(1);
     enemyPos.add(dir);
     
-  //  if(dist(enemyW/2, enemyW/2, 
+ 
   }
 
 

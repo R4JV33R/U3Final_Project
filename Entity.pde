@@ -21,8 +21,6 @@ class Entity
     {
       enemyW=0;
       enemyPos.mult(-1);
-      println("WEEEEE");
-      score+=100;
       return true;
     }
     return false;

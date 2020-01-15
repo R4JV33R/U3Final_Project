@@ -25,4 +25,15 @@ class Entity
     }
     return false;
   }
+
+  boolean ColUpdate(Projectile p)
+  {
+    if (dist(p.bulPos.x, p.bulPos.y, enemyPos.x, enemyPos.y)<15)
+    {
+      enemyW=0;
+      enemyPos.mult(-1);
+      return true;
+    }
+    return false;
+  }
 }

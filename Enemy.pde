@@ -41,12 +41,12 @@ class Enemy extends Entity
 
   Enemy(PVector player)
   {
-    
-   
-     randSide = (int)random(0, 3);
+
+
+    randSide = (int)random(0, 3);
     dir = new PVector(1, 0);
     speed = random(3, 5);
-    
+
     if (randSide == 0)// top
     {
       enemyStart = new PVector(random(0, width), 0);
@@ -66,26 +66,20 @@ class Enemy extends Entity
     {
       enemyStart = new PVector(800, random(0, width));
     }
-    
-     enemyPos = new PVector(enemyStart.x, enemyStart.y);
+
+    enemyPos = new PVector(enemyStart.x, enemyStart.y);
     enemyW=20;
-    
   }
 
-  void Update(PVector _player)
+  void Update (PVector _player)
   {
     fill(255, 0, 0);
-    image(face,enemyPos.x, enemyPos.y);
+    image(face, enemyPos.x, enemyPos.y);
     fill(0);
-    
+
     PVector dir = player.copy().sub(enemyPos);
     dir.normalize();
     dir.mult(1);
     enemyPos.add(dir);
-    
- 
   }
-
-
-
 }

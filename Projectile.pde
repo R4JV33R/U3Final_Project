@@ -1,4 +1,4 @@
- class Projectile extends Entity
+class Projectile extends Entity
 {
 
   //PVector bulPos;
@@ -26,9 +26,9 @@
     dir=mouse.sub(bulPos);
     dir.normalize();
     dir.
-    mult(speed);
-    
-    grade = int(random(1,7));
+      mult(speed);
+
+    grade = int(random(1, 7));
   }
 
 

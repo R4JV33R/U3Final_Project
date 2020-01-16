@@ -1,4 +1,6 @@
-Projectile p; //<>// //<>//
+import processing.sound.*; //<>//
+SoundFile file;
+Projectile p; //<>//
 Enemy e;
 Boss boss;
 PFont f;
@@ -13,19 +15,22 @@ int score;
 PImage face;
 PImage Linus; 
 boolean death;
+float timer;
+boolean enemyDeath;
 
 int COUNT = 100;
 
 void setup()
 {
 
-  f=createFont("Arial",30,true);
+  font = createFont("pricedown bl.ttf", 30, true);
   size(800, 800, P2D);
   face=loadImage("Face.png");
   face.resize(30, 30);
   Linus=loadImage("linus.png");
   Linus.resize(50, 50);
-
+  file = new SoundFile(this, "ofortuna.mp3");
+  file.play();
   player = new PVector(400, 600);
 
 
@@ -38,48 +43,37 @@ void draw()
 
   for (Enemy enemy : Enemies)
   {
-    
-    
-    if(dist(enemy.enemyPos.x,enemy.enemyPos.y, player.x, player.y)<10)
+
+
+    if (dist(enemy.enemyPos.x, enemy.enemyPos.y, player.x, player.y)<10)
     {
- 
+
       death=true;
-      
-      
     }
-    
-    if(scene==99)
-    {
-      background(0);
-      textFont(f,30);
-      fill(255,0,0);
-      text("You died epic memes",400,400);
-      
-    }
-    
   }
-  if(death==true)
+  if (death==true)
   {
-    
+
     scene=99;
-    
+    death=false;
   }
-  
+
   if (scene==2)
   {
     background(0);
+    textFont(font);
     textSize(50);
-    text ("Linus vs Raj", 300, 300);
-    text("Press 'P' to start", 400, 400 );
+    text ("Linus vs Raj", 200, 400);
+    text("Press 'P' to start", 250, 450 );
   }
 
   if (scene == 1)
   {
     background(255, 0, 0);
     textSize(32);
-    //fill (255, 0, 0);
-    //text("Score: "+score, 10, 30);
     fill(255);
+    timer=millis()/1000;
+    text(timer, 20, 20);
     ellipse(player.x, player.y, 20, 20);
 
     fill(0);
@@ -162,6 +156,39 @@ void draw()
       score += p.grade+10;
     }
   }
+
+
+  if (scene==99)
+  {
+    background(0);
+    textFont(font);
+    fill(255, 0, 0);
+    text("WASTED", 350, 360);
+    text("Press 'R' to restart", 300, 400 );
+
+    if (key == 'r'|key == 'R')
+    {
+      player.mult(0);
+      player.add(400, 400);
+      scene = 0;
+
+      for (int i = Enemies.size()-1; i >= 0; i--)
+      {
+        Enemies.remove(i);
+        Enemies.add(new Enemy(player));
+        Enemies.add(new Enemy(player));
+        Enemies.add(new Enemy(player));
+        Enemies.add(new Enemy(player));
+        Enemies.add(new Enemy(player));
+        Enemies.add(new Enemy(player));
+        Enemies.add(new Enemy(player));
+        Enemies.add(new Enemy(player));
+        Enemies.add(new Enemy(player));
+        Enemies.add(new Enemy(player));
+        Enemies.add(new Enemy(player));
+      }
+    }
+  }
 }
 
 
@@ -193,9 +220,14 @@ void keyPressed()
     right=true;
   }
   if (key=='P'|| key == 'p')
-  {
-    scene = 1;
 
+    scene = 1;
+  {
+    if (key=='R'|| key == 'r')
+
+      scene = 1;
+  }
+  {
     Enemies.add(new Enemy(player));
     Enemies.add(new Enemy(player));
     Enemies.add(new Enemy(player));
@@ -209,7 +241,6 @@ void keyPressed()
     Enemies.add(new Enemy(player));
   }
 }
-
 void keyReleased()
 {
   if (key=='W'|| key == 'w')

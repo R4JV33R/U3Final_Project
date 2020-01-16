@@ -12,7 +12,7 @@ class Projectile extends Entity
   {
     bulPos = new PVector(400, 400);
     dir = new PVector(1, 0);
-    speed = 5;
+    speed = 2;
     bulW = 10;
   }
 
